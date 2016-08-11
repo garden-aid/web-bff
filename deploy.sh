@@ -1,14 +1,20 @@
 #!/bin/bash
 set -e
 
-STAGE=${STAGE:-dev}
 AWS_REGION=${AWS_REGION:-ap-southeast-2}
+BRANCH=${TRAVIS_BRANCH:-$(git rev-parse --abbrev-ref HEAD)}
 
-echo 'Installing dependencies...'
-npm i
+if [[ $BRANCH == 'master' ]]; then
+  STAGE="prod"
+elif [[ $BRANCH == 'develop' ]]; then
+  STAGE="dev"
+fi
 
-echo 'Running tests'
-npm test
+if [ -z ${STAGE+x} ]; then
+  echo "Not deploying changes";
+  exit 0;
+fi
 
-echo "Deploying to stage $STAGE..."
+echo "Deploying from branch $BRANCH to stage $STAGE"
+
 sls deploy --stage $STAGE --region $AWS_REGION
