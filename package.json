@@ -1,0 +1,47 @@
+{
+  "name": "garden-aid-web-bff",
+  "version": "0.0.1",
+  "description": "Backend for Web Frontend",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "snyk test && istanbul cover _mocha tests/all -- -R spec --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johncmckim/garden-aid.git"
+  },
+  "keywords": [
+    "Serverless",
+    "IOT",
+    "AWS",
+    "Lambda"
+  ],
+  "author": "John McKim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johncmckim/garden-aid/issues"
+  },
+  "homepage": "https://github.com/johncmckim/garden-aid#readme",
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "graphql": "^0.6.1",
+    "joi": "^9.0.4",
+    "lodash": "^4.13.1",
+    "moment": "^2.14.1",
+    "util": "^0.10.3",
+    "vogels": "^2.2.0",
+    "vogels-promisified": "^2.2.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.4",
+    "lambda-wrapper": "^0.1.0",
+    "mocha": "^2.5.3",
+    "mocha-lcov-reporter": "^1.2.0",
+    "mock-require": "^1.3.0",
+    "sinon": "^1.17.5",
+    "snyk": "^1.18.0"
+  }
+}
