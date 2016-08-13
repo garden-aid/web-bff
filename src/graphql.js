@@ -4,10 +4,10 @@ const graphql = require('graphql');
 
 const schemaFactory = require('./query/schema');
 const tables        = require('./dynamodb/tables');
-const DayService    = require('./services/dayService');
+const DayService    = require('./services/day');
 
 const getSchema = function() {
-  const dayService = new DayService(tables.Day);
+  const dayService = DayService({ dayTable: tables.Day });
   return schemaFactory(dayService);
 };
 

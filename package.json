@@ -6,7 +6,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "snyk test && istanbul cover _mocha tests/all -- -R spec --recursive"
+    "test": "snyk test && npm run test:unit",
+    "test:unit": "istanbul cover _mocha tests/all -- -R spec --recursive"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "joi": "^9.0.4",
     "lodash": "^4.13.1",
     "moment": "^2.14.1",
+    "stampit": "^2.1.2",
     "util": "^0.10.3",
     "vogels": "^2.2.0",
     "vogels-promisified": "^2.2.3"
