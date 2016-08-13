@@ -28,4 +28,15 @@ describe('#env()', () => {
 
     expect(process.env).to.deep.equal(config);
   });
+
+  it('should set secure env vars', () => {
+    const config = {
+      a: 'item',
+      b: true
+    };
+
+    env(config, true);
+
+    expect(process.env).to.deep.equal(config);
+  });
 });
