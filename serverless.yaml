@@ -23,7 +23,7 @@ package:
       - src
       - node_modules
     exclude:
-      - test
+      - tests
       - coverage
       - package.json
 
