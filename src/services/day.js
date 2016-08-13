@@ -6,7 +6,6 @@ const stampit = require('stampit');
 const moment = require('moment');
 
 const Logger = require('../logger');
-const tables = require('../dynamodb/tables');
 
 const DayService = stampit().
   refs({

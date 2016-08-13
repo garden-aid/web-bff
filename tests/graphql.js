@@ -6,8 +6,6 @@ const sinon         = require('sinon');
 const lambdaWrapper = require('lambda-wrapper');
 const BbPromise     = require('bluebird');
 
-const mockTables = require('./dynamodb/mocks')
-
 const graphqlLambda = require('../src/graphql');
 const schemaFactory = require('../src/query/schema');
 const DayService    = require('../src/services/day');

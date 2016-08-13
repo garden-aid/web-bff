@@ -6,8 +6,6 @@ const sinon         = require('sinon');
 const lambdaWrapper = require('lambda-wrapper');
 const BbPromise     = require('bluebird');
 
-const mockTables = require('../dynamodb/mocks')
-
 const DayService = require('../../src/services/day');
 
 
@@ -36,7 +34,7 @@ const mockResponse = {
   }]
 };
 
-const Day = {
+const mockDay = {
   gte: function () {
     return this;
   },
@@ -55,7 +53,7 @@ describe('DayService', () => {
 
   describe('#convertResults()', () => {
     it('converts results', function() {
-      const dayService = DayService({ dayTable: mockTables.Day });
+      const dayService = DayService({ dayTable: mockDay });
       const result = dayService.convertResults(mockResponse.Items);
 
       expect(result).to.deep.equal([{
@@ -70,7 +68,7 @@ describe('DayService', () => {
 
   describe('#logResults()', () => {
     it('converts results', function() {
-      const dayService = DayService({ dayTable: mockTables.Day });
+      const dayService = DayService({ dayTable: mockDay });
       expect(() => dayService.logResults(mockResponse)).to.not.throw;
     });
   });
