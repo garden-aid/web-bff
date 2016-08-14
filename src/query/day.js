@@ -17,12 +17,14 @@ module.exports = function(dayService) {
     description: 'Retrieve moisture levels per day',
     type: new graphql.GraphQLList(MoistureType),
     args: {
-      day: { type: graphql.GraphQLInt },
-      month: { type: graphql.GraphQLInt },
-      year: { type: graphql.GraphQLInt },
+      hours: {
+        type: graphql.GraphQLInt,
+        defaultValue: 1
+      },
     },
     resolve: (_, args, ast) => {
-      return dayService.getLastHours('garden-aid-client-test-js', 24);
+      const hours = args.hours > 0 ? args.hours : 1;
+      return dayService.getLastHours('garden-aid-client-test-js', hours);
     }
   }
 }

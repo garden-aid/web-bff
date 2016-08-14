@@ -1,12 +1,9 @@
 
-module.exports = function(config) {
-  console.log('Setting up env vars');
-
-  console.log('Config: ', config);
-
+module.exports = function(config, secure) {
   Object.keys(config).forEach((key, index) => {
-    process.env[key] = config[key];
-  });
+    const value = config[key];
+    process.env[key] = value;
 
-  console.log('Env: ', process.env);
+    console.log(`Env: ${key}=${secure ? 'secure' : value}`)
+  });
 }
