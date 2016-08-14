@@ -16,11 +16,12 @@ const DayService = stampit().
   }).
   methods({
     getLastHours(clientId, hours) {
-      //const after = moment().subtract(hours, 'hours').valueOf();
-      //console.log('Retreiving records after: ' + after);
+      const after = moment().subtract(hours, 'hours').valueOf();
+      console.log('Retreiving records after: ' + after);
 
       return this.dayTable
         .query(clientId)
+        .where('Timestamp').gte(after.toString())
         .execAsync()
         .then((resp) => this.logResults(resp))
         .then((resp) => this.convertResults(resp.Items))
