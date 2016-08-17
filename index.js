@@ -5,7 +5,7 @@ const config = require('./config.json');
 const secrets = require('./secrets.json');
 
 env(config);
-env(secrets);
+env(secrets, true);
 
 // Setup env vars before requiring functions
 const graphql = require('./src/graphql');
