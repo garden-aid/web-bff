@@ -19,6 +19,8 @@ echo "Deploying from branch $BRANCH to stage $STAGE"
 
 cp "./config/$STAGE.json" config.json
 
+node ./create-secrets.js # create secrets.json from env variables
+
 npm prune --production
 
 sls deploy --stage $STAGE --region $AWS_REGION

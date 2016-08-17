@@ -20,9 +20,12 @@ defaults:
 package:
     include:
       - index.js
+      - config.json
+      - secrets.json
       - src
       - node_modules
     exclude:
+      - create-secrets.js
       - tests
       - coverage
       - package.json
