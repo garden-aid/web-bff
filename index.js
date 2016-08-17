@@ -13,4 +13,4 @@ const iopipe = require("iopipe")({
    clientId: process.env.iopipe.key
 });
 
-module.exports.graphql = graphql.handler;
+module.exports.graphql = iopipe(graphql.handler);
