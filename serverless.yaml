@@ -18,17 +18,19 @@ defaults:
     stage: dev
     region: ap-southeast-2
 package:
-    include:
-      - index.js
-      - config.json
-      - secrets.json
-      - src
-      - node_modules
     exclude:
-      - create-secrets.js
-      - tests
       - coverage
+      - tests
+      - .editorconfig
+      - .eslintignore
+      - .gitignore
+      - .synk
+      - .travis.yml
+      - .create-secrets.js
+      - deploy.sh
+      - LICENSE
       - package.json
+      - README.md
 
 functions:
     graphQl:
