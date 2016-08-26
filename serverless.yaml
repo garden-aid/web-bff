@@ -18,6 +18,9 @@ defaults:
     stage: dev
     region: ap-southeast-2
 package:
+    include:
+      - node_modules
+      - src
     exclude:
       - coverage
       - tests
