@@ -9,8 +9,8 @@ env(secrets, true);
 
 // Setup env vars before requiring functions
 const graphql = require('./src/graphql');
-const iopipe = require("iopipe")({
-   clientId: process.env.iopipe.key
+const iopipe = require('iopipe')({
+   clientId: process.env.iopipeKey
 });
 
 module.exports.graphql = graphql.handler;

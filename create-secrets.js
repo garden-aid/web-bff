@@ -13,9 +13,7 @@ if (!iopipeKey) {
 }
 
 const secrets = {
-  iopipe: {
-    key: iopipeKey
-  }
+  iopipeKey: iopipeKey
 };
 
 const secretsPath = path.resolve(__dirname, './secrets.json');
