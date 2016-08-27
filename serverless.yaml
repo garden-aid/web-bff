@@ -19,13 +19,21 @@ defaults:
     region: ap-southeast-2
 package:
     include:
-      - index.js
-      - src
       - node_modules
+      - src
     exclude:
-      - tests
       - coverage
+      - tests
+      - .editorconfig
+      - .eslintignore
+      - .gitignore
+      - .synk
+      - .travis.yml
+      - .create-secrets.js
+      - deploy.sh
+      - LICENSE
       - package.json
+      - README.md
 
 functions:
     graphQl:

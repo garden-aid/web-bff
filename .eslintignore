@@ -1,0 +1,6 @@
+coverage
+
+webpack/*
+public/dist/*
+
+gulpfile.js

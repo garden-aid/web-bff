@@ -9,6 +9,6 @@ env:
 
 before_install:
   - npm i -g snyk
-  - npm i -g serverless@1.0.0-beta.1
+  - npm i -g serverless@beta
 
 script: ./deploy.sh
