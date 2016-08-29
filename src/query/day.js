@@ -24,6 +24,7 @@ module.exports = function(dayService) {
     },
     resolve: (_, args, ast) => {
       const hours = args.hours > 0 ? args.hours : 1;
+      // TODO remove clientid
       return dayService.getLastHours('garden-aid-client-test-js', hours);
     }
   }
