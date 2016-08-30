@@ -17,6 +17,9 @@ module.exports = function(dayService) {
     description: 'Retrieve moisture levels per day',
     type: new graphql.GraphQLList(MoistureType),
     args: {
+      clientId: {
+        type: graphql.GraphQLString,
+      },
       hours: {
         type: graphql.GraphQLInt,
         defaultValue: 1
@@ -24,8 +27,7 @@ module.exports = function(dayService) {
     },
     resolve: (_, args, ast) => {
       const hours = args.hours > 0 ? args.hours : 1;
-      // TODO remove clientid
-      return dayService.getLastHours('garden-aid-client-test-js', hours);
+      return dayService.getLastHours(args.clientId, hours);
     }
   }
 }

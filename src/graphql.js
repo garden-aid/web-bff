@@ -13,7 +13,7 @@ module.exports.handler = function(event, context, cb) {
 
   const query = event.body.query;
 
-  return graphQLService.query(event.body.query)
+  return graphQLService.runQuery(event.body.query)
     .then((response) => {
       cb(null, response)
     })
