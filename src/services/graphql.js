@@ -12,9 +12,9 @@ const Logger = require('../logger');
 
 const GraphQLService = stampit().
   init((opts) => {
-    if(!opts.instance.dayService) throw new Error('dayService is required');
+    if(!opts.instance.moistureService) throw new Error('moistureService is required');
 
-    opts.instance.schema = schemaFactory(opts.instance.dayService);
+    opts.instance.schema = schemaFactory(opts.instance.moistureService);
   }).
   methods({
     runQuery(query) {

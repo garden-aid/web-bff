@@ -1,5 +1,5 @@
 
 'use strict';
 
-require('./day');
+require('./moisture');
 require('./graphql');

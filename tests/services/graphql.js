@@ -6,7 +6,7 @@ const sinon         = require('sinon');
 const BbPromise     = require('bluebird');
 
 const schemaFactory = require('../../src/query/schema');
-const DayService    = require('../../src/services/day');
+const MoistureService    = require('../../src/services/moisture');
 const GraphQLService    = require('../../src/services/graphql');
 
 const mockData = [{
@@ -21,18 +21,18 @@ describe('#handler()', () => {
   let graphQlService;
 
   beforeEach(() => {
-    const dayService = {
+    const moistureService = {
       getLastHours() {
           return mockData;
       }
     };
 
-    graphQlService = GraphQLService({ dayService: dayService });
+    graphQlService = GraphQLService({ moistureService: moistureService });
   });
 
   it('return data', function() {
     const query = `{
-      day {
+      moisture {
         date, moisture
       }
     }`;
@@ -41,7 +41,7 @@ describe('#handler()', () => {
       .then((result) => {
         expect(result).to.deep.equal({
           data: {
-            day: mockData
+            moisture: mockData
           }
         });
       });

@@ -1,12 +1,12 @@
 'use strict';
 
 const tablesFactory = require('./dynamodb/tables');
-const DayService    = require('./services/day');
+const MoistureService    = require('./services/moisture');
 const GraphQLService = require('./services/graphql');
 
 const tables = tablesFactory();
-const dayService = DayService({ dayTable: tables.Day });
-const graphQLService = GraphQLService({ dayService: dayService });
+const moistureService = MoistureService({ moistureTable: tables.Moisture });
+const graphQLService = GraphQLService({ moistureService: moistureService });
 
 module.exports.handler = function(event, context, cb) {
   console.log('Received event', event);

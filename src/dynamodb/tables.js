@@ -11,7 +11,7 @@ module.exports = () => {
     throw new Error("Missing moisture table name");
   }
 
-  const Day = vogels.define('Day', {
+  const Moisture = vogels.define('Moisture', {
     hashKey: 'ClientId',
     rangeKey: 'Timestamp',
     schema: {
@@ -27,6 +27,6 @@ module.exports = () => {
   });
 
   return {
-    Day: Day
+    Moisture: Moisture
   };
 }

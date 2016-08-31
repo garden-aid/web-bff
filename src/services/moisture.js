@@ -7,19 +7,19 @@ const moment = require('moment');
 
 const Logger = require('../logger');
 
-const DayService = stampit().
+const MoistureService = stampit().
   refs({
-    dayTable: null
+    moistureTable: null
   }).
   init((opts) => {
-    if(!opts.instance.dayTable) throw new Error('dayTable is required');
+    if(!opts.instance.moistureTable) throw new Error('moistureTable is required');
   }).
   methods({
     getLastHours(clientId, hours) {
       const after = moment().subtract(hours, 'hours').valueOf();
       console.log('Retreiving records after: ' + after);
 
-      return this.dayTable
+      return this.moistureTable
         .query(clientId)
         .where('Timestamp').gte(after.toString())
         .execAsync()
@@ -56,4 +56,4 @@ const DayService = stampit().
   }).
   compose(Logger);
 
-module.exports = DayService;
+module.exports = MoistureService;

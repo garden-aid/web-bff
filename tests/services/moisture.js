@@ -6,7 +6,7 @@ const sinon         = require('sinon');
 const lambdaWrapper = require('lambda-wrapper');
 const BbPromise     = require('bluebird');
 
-const DayService = require('../../src/services/day');
+const MoistureService = require('../../src/services/moisture');
 
 
 const mockResponse = {
@@ -34,7 +34,7 @@ const mockResponse = {
   }]
 };
 
-const mockDay = {
+const mockMoisture = {
   gte: function () {
     return this;
   },
@@ -46,15 +46,15 @@ const mockDay = {
   }
 };
 
-describe('DayService', () => {
-  it('requires day table', function() {
-    expect(() => DayService()).to.throw(Error);
+describe('MoistureService', () => {
+  it('requires moisture table', function() {
+    expect(() => MoistureService()).to.throw(Error);
   });
 
   describe('#convertResults()', () => {
     it('converts results', function() {
-      const dayService = DayService({ dayTable: mockDay });
-      const result = dayService.convertResults(mockResponse.Items);
+      const moistureService = MoistureService({ moistureTable: mockMoisture });
+      const result = moistureService.convertResults(mockResponse.Items);
 
       expect(result).to.deep.equal([{
         "date": '2016-08-01T22:16:43.642Z',
@@ -68,8 +68,8 @@ describe('DayService', () => {
 
   describe('#logResults()', () => {
     it('converts results', function() {
-      const dayService = DayService({ dayTable: mockDay });
-      expect(() => dayService.logResults(mockResponse)).to.not.throw;
+      const moistureService = MoistureService({ moistureTable: mockMoisture });
+      expect(() => moistureService.logResults(mockResponse)).to.not.throw;
     });
   });
 });

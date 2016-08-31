@@ -11,10 +11,10 @@ const MoistureType = new graphql.GraphQLObjectType({
   }
 });
 
-module.exports = function(dayService) {
+module.exports = function(moistureService) {
   return {
-    name: 'DayQuery',
-    description: 'Retrieve moisture levels per day',
+    name: 'MoistureQuery',
+    description: 'Retrieve moisture level',
     type: new graphql.GraphQLList(MoistureType),
     args: {
       clientId: {
@@ -27,7 +27,7 @@ module.exports = function(dayService) {
     },
     resolve: (_, args, ast) => {
       const hours = args.hours > 0 ? args.hours : 1;
-      return dayService.getLastHours(args.clientId, hours);
+      return moistureService.getLastHours(args.clientId, hours);
     }
   }
 }
