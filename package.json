@@ -27,11 +27,12 @@
   },
   "homepage": "https://github.com/johncmckim/garden-aid#readme",
   "dependencies": {
-    "chai": "^3.5.0",
     "bluebird": "^3.4.1",
+    "chai": "^3.5.0",
     "graphql": "^0.6.1",
     "iopipe": "0.0.19",
     "joi": "^9.0.4",
+    "jsonwebtoken": "^7.1.9",
     "lodash": "^4.15.0",
     "mocha": "^2.5.3",
     "mocha-lcov-reporter": "^1.2.0",
