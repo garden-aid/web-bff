@@ -9,23 +9,21 @@ const MoistureType = new graphql.GraphQLObjectType({
   },
 });
 
-module.exports = (moistureService) => {
-  return {
-    name: 'MoistureQuery',
-    description: 'Retrieve moisture level',
-    type: new graphql.GraphQLList(MoistureType),
-    args: {
-      clientId: {
-        type: graphql.GraphQLString,
-      },
-      hours: {
-        type: graphql.GraphQLInt,
-        defaultValue: 1,
-      },
+module.exports = (moistureService) => ({
+  name: 'MoistureQuery',
+  description: 'Retrieve moisture level',
+  type: new graphql.GraphQLList(MoistureType),
+  args: {
+    clientId: {
+      type: graphql.GraphQLString,
     },
-    resolve: (_, args, ast) => {
-      const hours = args.hours > 0 ? args.hours : 1;
-      return moistureService.getLastHours(args.clientId, hours);
+    hours: {
+      type: graphql.GraphQLInt,
+      defaultValue: 1,
     },
-  };
-};
+  },
+  resolve(_, args, ast) { // eslint-disable-line no-unused-vars
+    const hours = args.hours > 0 ? args.hours : 1;
+    return moistureService.getLastHours(args.clientId, hours);
+  },
+});

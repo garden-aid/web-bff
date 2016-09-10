@@ -1,27 +1,24 @@
-
 'use strict';
 
-const expect        = require('chai').expect;
-const sinon         = require('sinon');
-
+const expect = require('chai').expect;
 const env = require('../env');
 
 let envPlaceholder = {};
 
 describe('#env()', () => {
-  before(function() {
+  before(() => {
     envPlaceholder = process.env;
     process.env = {};
   });
 
-  after(function() {
+  after(() => {
     process.env = envPlaceholder;
   });
 
   it('should set env vars', () => {
     const config = {
       a: 'item',
-      b: true
+      b: true,
     };
 
     env(config);
@@ -32,7 +29,7 @@ describe('#env()', () => {
   it('should set secure env vars', () => {
     const config = {
       a: 'item',
-      b: true
+      b: true,
     };
 
     env(config, true);

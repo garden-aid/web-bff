@@ -3,3 +3,11 @@ plugins:
   - react
   - jsx-a11y
   - import
+
+env:
+  mocha: true
+  node: true
+
+rules:
+  no-console: 0
+  strict: 0

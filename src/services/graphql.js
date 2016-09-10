@@ -10,7 +10,8 @@ const GraphQLService = stampit()
   .init((opts) => {
     if (!opts.instance.moistureService) throw new Error('moistureService is required');
 
-    opts.instance.schema = schemaFactory(opts.instance.moistureService);
+    const schema = schemaFactory(opts.instance.moistureService);
+    opts.instance.schema = schema; // eslint-disable-line no-param-reassign
   })
   .methods({
     runQuery(query) {

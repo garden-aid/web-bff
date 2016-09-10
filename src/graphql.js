@@ -4,8 +4,8 @@ const moistureService = require('./services/moisture');
 const graphQLService = require('./services/graphql');
 
 const tables = tablesFactory();
-const moistureService = moistureService({ moistureTable: tables.Moisture });
-const graphql = graphQLService({ moistureService: moistureService });
+const moisture = moistureService({ moistureTable: tables.Moisture });
+const graphql = graphQLService({ moistureService: moisture });
 
 module.exports.handler = (event, context, cb) => {
   console.log('Received event', event);

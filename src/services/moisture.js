@@ -12,7 +12,7 @@ const MoistureService = stampit()
   .methods({
     getLastHours(clientId, hours) {
       const after = moment().subtract(hours, 'hours').valueOf();
-      console.log('Retreiving records after: ' + after);
+      console.log(`Retreiving records after: ${after}`);
 
       return this.moistureTable
         .query(clientId)
