@@ -38,10 +38,15 @@ package:
 functions:
     graphQl:
         handler: index.graphql
-        memory: 128
+        memory: 512
         timeout: 3
         events:
             - http:
                 path: graphql
                 method: post
                 cors: true
+                authorizer: authorize
+    authorize:
+        handler: index.authorize
+        memory: 512
+        timeout: 3

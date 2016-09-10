@@ -5,7 +5,7 @@ const vogels = require('vogels-promisified');
 const Joi    = require('joi');
 
 module.exports = () => {
-  const moistureTableName = process.env.moistureTableName;
+  const moistureTableName = process.env.MOISTURE_TABLE_NAME;
 
   if(!moistureTableName) {
     throw new Error("Missing moisture table name");
