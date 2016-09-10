@@ -5,17 +5,18 @@ module.exports.authorize = (token, secret, authInfo, cb) => {
   const options = {};
 
   return jwt.verify(token, secret, options, (err, identity) => {
-    if (err) return cb(err);
+    const username = identity ? identity.username : '';
 
-    console.log(`Building policy for ${identity.username} with: `, authInfo);
+    console.log(`Building policy for ${username} with: `, authInfo);
 
-    const policy = new AuthPolicy(identity.username, authInfo.accountId, authInfo);
-    policy.denyAllMethods();
+    const policy = new AuthPolicy(username, authInfo.accountId, authInfo);
 
-    // policy.allowAllMethods();
-    // Or define subset based on scop - verifiedJwt.body.scope
-    // policy.allowMethod(AuthPolicy.HttpVerb.GET, "*");
-    // policy.allowMethod(AuthPolicy.HttpVerb.POST, "/users/" + verifiedJwt.body.sub);
+    if (err) {
+      console.log('Error verifing jwt', err);
+      policy.denyAllMethods();
+    } else {
+      policy.allowMethod(AuthPolicy.HttpVerb.POST, '/graphql');
+    }
 
     const result = policy.build();
     console.log('Returning auth result: ', result, result.policyDocument.Statement);
