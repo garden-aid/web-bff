@@ -2,6 +2,8 @@ service: garden-aid-web-bff
 provider:
     name: aws
     runtime: nodejs4.3
+    stage: dev
+    region: ap-southeast-2
     iamRoleStatements:
        -  Effect: Allow
           Action:
@@ -13,10 +15,6 @@ provider:
             - dynamodb:UpdateItem
             - dynamodb:DeleteItem
           Resource: "arn:aws:dynamodb:ap-southeast-2:*:*"
-
-defaults:
-    stage: dev
-    region: ap-southeast-2
 package:
     include:
       - node_modules

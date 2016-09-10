@@ -28,4 +28,4 @@ node ./create-secrets.js # create secrets.json from env variables
 
 npm prune --production
 
-sls deploy --stage $STAGE --region $AWS_REGION
+sls deploy --stage $STAGE --region $AWS_REGION --verbose
