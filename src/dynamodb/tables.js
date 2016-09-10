@@ -1,14 +1,12 @@
 
-'use strict';
-
 const vogels = require('vogels-promisified');
-const Joi    = require('joi');
+const Joi = require('joi');
 
 module.exports = () => {
   const moistureTableName = process.env.MOISTURE_TABLE_NAME;
 
-  if(!moistureTableName) {
-    throw new Error("Missing moisture table name");
+  if (!moistureTableName) {
+    throw new Error('Missing moisture table name');
   }
 
   const Moisture = vogels.define('Moisture', {
@@ -23,10 +21,10 @@ module.exports = () => {
         Recorded: Joi.date(),
       }),
     },
-    tableName: moistureTableName
+    tableName: moistureTableName,
   });
 
   return {
-    Moisture: Moisture
+    Moisture: Moisture,
   };
-}
+};

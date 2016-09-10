@@ -6,6 +6,7 @@
     "test": "test"
   },
   "scripts": {
+    "lint": "eslint .",
     "test": "snyk test && npm run test:unit",
     "test:unit": "istanbul cover _mocha tests/all -- -R spec --recursive"
   },
@@ -39,6 +40,11 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "eslint": "^3.5.0",
+    "eslint-config-airbnb": "^11.0.0",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-jsx-a11y": "^2.2.1",
+    "eslint-plugin-react": "^6.2.0",
     "istanbul": "^0.4.4",
     "lambda-wrapper": "^0.1.0",
     "mocha": "^2.5.3",

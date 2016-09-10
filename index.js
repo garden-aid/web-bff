@@ -12,7 +12,7 @@ const graphql = require('./src/graphql');
 const authorize = require('./src/authorize');
 
 const iopipe = require('iopipe')({
-   clientId: process.env.IOPIPE_KEY
+  clientId: process.env.IOPIPE_KEY,
 });
 
 module.exports.graphql = iopipe(graphql.handler);

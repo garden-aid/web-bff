@@ -1,6 +1,4 @@
 
-'use strict';
-
 const graphql = require('graphql');
 
 const MoistureType = new graphql.GraphQLObjectType({
@@ -8,10 +6,10 @@ const MoistureType = new graphql.GraphQLObjectType({
   fields: {
     date: { type: graphql.GraphQLString },
     moisture: { type: graphql.GraphQLFloat },
-  }
+  },
 });
 
-module.exports = function(moistureService) {
+module.exports = (moistureService) => {
   return {
     name: 'MoistureQuery',
     description: 'Retrieve moisture level',
@@ -22,12 +20,12 @@ module.exports = function(moistureService) {
       },
       hours: {
         type: graphql.GraphQLInt,
-        defaultValue: 1
+        defaultValue: 1,
       },
     },
     resolve: (_, args, ast) => {
       const hours = args.hours > 0 ? args.hours : 1;
       return moistureService.getLastHours(args.clientId, hours);
-    }
-  }
-}
+    },
+  };
+};

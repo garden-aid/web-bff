@@ -1,20 +1,15 @@
 
-'use strict';
-
-const BbPromise = require('bluebird');
 const stampit = require('stampit');
 const moment = require('moment');
 
 const Logger = require('../logger');
 
-const MoistureService = stampit().
-  refs({
-    moistureTable: null
-  }).
-  init((opts) => {
-    if(!opts.instance.moistureTable) throw new Error('moistureTable is required');
-  }).
-  methods({
+const MoistureService = stampit()
+  .refs({ moistureTable: null })
+  .init((opts) => {
+    if (!opts.instance.moistureTable) throw new Error('moistureTable is required');
+  })
+  .methods({
     getLastHours(clientId, hours) {
       const after = moment().subtract(hours, 'hours').valueOf();
       console.log('Retreiving records after: ' + after);
@@ -35,7 +30,7 @@ const MoistureService = stampit().
       this.log('Found', resp.Count, 'items');
       this.log('Items: ', resp.Items);
 
-      if(resp.ConsumedCapacity) {
+      if (resp.ConsumedCapacity) {
         this.log('Query consumed: ', resp.ConsumedCapacity);
       }
 
@@ -53,7 +48,7 @@ const MoistureService = stampit().
 
       return result;
     },
-  }).
-  compose(Logger);
+  })
+  .compose(Logger);
 
 module.exports = MoistureService;

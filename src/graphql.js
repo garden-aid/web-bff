@@ -1,23 +1,16 @@
-'use strict';
 
 const tablesFactory = require('./dynamodb/tables');
-const MoistureService    = require('./services/moisture');
-const GraphQLService = require('./services/graphql');
+const moistureService = require('./services/moisture');
+const graphQLService = require('./services/graphql');
 
 const tables = tablesFactory();
-const moistureService = MoistureService({ moistureTable: tables.Moisture });
-const graphQLService = GraphQLService({ moistureService: moistureService });
+const moistureService = moistureService({ moistureTable: tables.Moisture });
+const graphql = graphQLService({ moistureService: moistureService });
 
-module.exports.handler = function(event, context, cb) {
+module.exports.handler = (event, context, cb) => {
   console.log('Received event', event);
 
-  const query = event.body.query;
-
-  return graphQLService.runQuery(event.body.query)
-    .then((response) => {
-      cb(null, response)
-    })
-    .catch((error) => {
-      cb(error)
-    });
+  return graphql.runQuery(event.body.query)
+    .then((response) => cb(null, response))
+    .catch((error) => cb(error));
 };
