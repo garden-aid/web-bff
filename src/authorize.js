@@ -3,6 +3,8 @@ const utils = require('./auth/utils');
 const auth0 = require('./auth/auth0');
 
 module.exports.handler = (event, context, cb) => {
+  console.log('Received event', event);
+
   const token = utils.getToken(event.authorizationToken);
 
   if (!token) {
