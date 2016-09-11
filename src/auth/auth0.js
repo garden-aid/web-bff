@@ -2,7 +2,7 @@
 const AuthPolicy = require('./policy').AuthPolicy;
 
 module.exports.authorize = (token, auth0Client, authInfo) =>
-  auth0Client.getInfo(token)
+  auth0Client.tokens.getInfo(token)
     .then((userInfo) => {
       if (!userInfo || !userInfo.user_id) {
         throw new Error('No user_id returned from Auth0');
@@ -18,4 +18,8 @@ module.exports.authorize = (token, auth0Client, authInfo) =>
       console.log('Returning auth result: ', result, result.policyDocument.Statement);
 
       return result;
+    })
+    .catch((err) => {
+      console.log(err);
+      return 'Unauthorized';
     });
