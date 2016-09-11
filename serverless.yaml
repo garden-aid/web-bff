@@ -43,7 +43,9 @@ functions:
                 path: graphql
                 method: post
                 cors: true
-                authorizer: authorize
+                authorizer:
+                  name: authorize
+                  resultTtlInSeconds: 30
     authorize:
         handler: index.authorize
         memory: 512

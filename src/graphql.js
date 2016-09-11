@@ -12,5 +12,5 @@ module.exports.handler = (event, context, cb) => {
 
   return graphql.runQuery(event.body.query)
     .then((response) => cb(null, response))
-    .catch((error) => cb(error));
+    .catch((err) => cb(err));
 };

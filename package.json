@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/johncmckim/garden-aid#readme",
   "dependencies": {
+    "auth0": "^2.3.1",
     "bluebird": "^3.4.1",
     "chai": "^3.5.0",
     "graphql": "^0.6.1",

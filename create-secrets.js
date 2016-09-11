@@ -7,7 +7,6 @@ const _ = require('lodash');
 
 const envVars = [
   'IOPIPE_KEY',
-  'AUTH0_CLIENT_ID', 'AUTH0_CLIENT_SECRET',
 ];
 
 const secrets = _.pick(process.env, envVars);

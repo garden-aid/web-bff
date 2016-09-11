@@ -1,6 +1,12 @@
 
 const utils = require('./auth/utils');
 const auth0 = require('./auth/auth0');
+const AuthenticationClient = require('auth0').AuthenticationClient;
+
+const authClient = new AuthenticationClient({
+  domain: process.env.AUTH0_DOMAIN,
+  clientId: process.env.AUTH0_CLIENT_ID,
+});
 
 module.exports.handler = (event, context, cb) => {
   console.log('Received event', event);
@@ -12,7 +18,8 @@ module.exports.handler = (event, context, cb) => {
   }
 
   const authInfo = utils.getAuthInfo(event.methodArn);
-  const secret = process.env.AUTH0_CLIENT_SECRET;
 
-  return auth0.authorize(token, secret, authInfo, cb);
+  return auth0.authorize(token, authClient, authInfo)
+    .then((result) => cb(null, result))
+    .catch((err) => cb(err));
 };
