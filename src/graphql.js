@@ -1,36 +1,16 @@
-'use strict';
 
-const graphql = require('graphql');
-
-const schemaFactory = require('./query/schema');
 const tablesFactory = require('./dynamodb/tables');
-const DayService    = require('./services/day');
+const moistureService = require('./services/moisture');
+const graphQLService = require('./services/graphql');
 
-const getSchema = function() {
-  const tables = tablesFactory();
-  const dayService = DayService({ dayTable: tables.Day });
-  return schemaFactory(dayService);
-};
+const tables = tablesFactory();
+const moisture = moistureService({ moistureTable: tables.Moisture });
+const graphql = graphQLService({ moistureService: moisture });
 
-const handler = function(event, context, cb) {
+module.exports.handler = (event, context, cb) => {
   console.log('Received event', event);
 
-  const schema = this.getSchema();
-
-  console.log('Processing graphql query');
-  return graphql.graphql(schema, event.body.query)
-    .then((response) => {
-      cb(null, response)
-    })
-    .catch((error) => {
-      cb(error)
-    });
+  return graphql.runQuery(event.body.query)
+    .then((response) => cb(null, response))
+    .catch((err) => cb(err));
 };
-
-const graphqlLambda = {
-  getSchema: getSchema,
-};
-
-graphqlLambda.handler = handler.bind(graphqlLambda),
-
-module.exports = graphqlLambda;

@@ -1,3 +1,5 @@
 {
-  "moistureTableName": "moisture-data-dev"
+  "MOISTURE_TABLE_NAME": "moisture-data-dev",
+  "AUTH0_DOMAIN": "johncmckim.au.auth0.com",
+  "AUTH0_CLIENT_ID": "SWLx5XS17ssom0DCuTPlDlXnJUbTXbiP"
 }

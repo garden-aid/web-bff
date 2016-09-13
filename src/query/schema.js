@@ -1,19 +1,18 @@
-'use strict';
 
 const graphql = require('graphql');
 
-const dayFactory = require('./day');
+const moistureFactory = require('./moisture');
 
-module.exports = function(dayService) {
+module.exports = (moistureService) => {
   const schema = new graphql.GraphQLSchema({
     query: new graphql.GraphQLObjectType({
       name: 'Root',
       description: 'Root of the Schema',
       fields: {
-        day: dayFactory(dayService)
-      }
-    })
+        moisture: moistureFactory(moistureService),
+      },
+    }),
   });
 
   return schema;
-}
+};
